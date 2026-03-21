@@ -1,0 +1,53 @@
+1. ONE-PAGE DOCUMENT (Kubernetes Setup Summary)
+🚀 Project: Spring Boot + PostgreSQL on Kubernetes
+📌 Overview
+
+Deployed a containerized Spring Boot application with PostgreSQL on Kubernetes using Docker Desktop. Enabled service-to-service communication and external access for testing.
+
+🏗️ Architecture
+Client → Service (NodePort / Port-forward)
+           ↓
+     Spring Boot Pods
+           ↓
+     PostgreSQL Service
+           ↓
+     PostgreSQL Pod
+⚙️ Key Components
+1. Deployment
+Spring Boot (replicas = 2)
+PostgreSQL (replicas = 1)
+2. Services
+springboot-service → NodePort (external access)
+postgres → ClusterIP (internal only)
+🔗 Networking
+Internal DB connection:
+jdbc:postgresql://postgres:5432/devdb
+Port forwarding (local access):
+kubectl port-forward service/postgres 5433:5432
+kubectl port-forward service/springboot-service 8080:80
+🌐 Access
+API:
+http://localhost:8080/users
+PostgreSQL (pgAdmin):
+Host: localhost
+Port: 5433
+User: devuser
+Password: devpass
+🔧 Commands Used
+kubectl apply -f k8s/
+kubectl get pods
+kubectl get svc
+kubectl logs <pod>
+kubectl port-forward service/<name> <local>:<container>
+⚠️ Issues Faced & Fixes
+Issue	Fix
+Kubernetes not running	Enable in Docker Desktop
+NodePort not accessible	Use port-forward
+DB connection failed	Use service name (postgres)
+Port conflict (5432)	Use 5433 via port-forward
+🧠 Key Learnings
+Kubernetes uses service names, not localhost
+Pods are ephemeral (stateless by default)
+Services enable internal communication
+kubectl port-forward is essential for debugging
+Docker Compose ≠ Kubernetes (different architecture)
