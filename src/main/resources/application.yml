@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/devdb
+    username: devuser
+    password: devpass
+  application:
+    name: sample
+  jackson:
+    time-zone: Asia/Kolkata
+  jpa:
+    hibernate:
+      ddl-auto: update
+      jdbc:
+        time_zone: Asia/Kolkata
+    show-sql: true
