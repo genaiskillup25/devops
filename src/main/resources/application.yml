@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/devdb
-    username: devuser
-    password: devpass
+    url: jdbc:postgresql://localhost:5432/devdb
+    username: postgres
+    password: postgres
   application:
     name: sample
   jackson:
