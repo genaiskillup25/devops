@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 
 public class KafkaProducerService {
 
-    public static final String KEY = "KAYDATE-" + new Date();
+    public static final String KEY = "KAYDATE12-" + new Date();
 
     public static void main(String g[]) {
 
